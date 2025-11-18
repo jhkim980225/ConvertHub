@@ -22,25 +22,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  className="w-6 h-6 text-gray-600 dark:text-gray-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
+            <div className="flex items-center space-x-4">              
+                             
               <Link to="/" className="flex items-center space-x-2">
                 <span className="text-2xl">🔄</span>
                 <h1 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -69,51 +52,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         </div>
       </header>
 
-      <div className="flex">
-        {/* 사이드바 */}
-        <aside
-          className={`
-            ${isSidebarOpen ? 'w-64' : 'w-0'}
-            transition-all duration-300 overflow-hidden
-            bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700
-            fixed left-0 top-16 bottom-0 overflow-y-auto z-40
-          `}
-        >
-          <div className="p-4 space-y-6">
-            {categories.map(category => {
-              const categoryTools = getToolsByCategory(category.id);
-              if (categoryTools.length === 0) return null;
-
-              return (
-                <div key={category.id}>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center space-x-2">
-                    <span>{category.icon}</span>
-                    <span>{category.name}</span>
-                  </h3>
-                  <ul className="space-y-1">
-                    {categoryTools.map(tool => (
-                      <li key={tool.id}>
-                        <Link
-                          to={tool.path}
-                          className={`
-                            block px-3 py-2 rounded-lg text-sm
-                            ${location.pathname === tool.path
-                              ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                              : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                            }
-                          `}
-                        >
-                          {tool.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </aside>
-
+      <div className="flex">       
         {/* 메인 컨텐츠 */}
         <main
           className={`

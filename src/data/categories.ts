@@ -27,7 +27,7 @@ export const categories: CategoryInfo[] = [
     name: '유틸리티',
     description: '기타 편리한 도구들',
     icon: '🔧',
-  },
+  },  
 ];
 
 /**
